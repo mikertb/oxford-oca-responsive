@@ -37,8 +37,8 @@ questionnaire = {
         // Attach event handlers to elements.
         this.ui.arrow_prev.click(this.prev.bind(this));
         this.ui.arrow_next.click(this.next.bind(this));
-        this.ui.choice_buttons.mousedown(this.pushButton.bind(this));
-        this.ui.choice_buttons.mouseout(this.unpushButton.bind(this));
+        this.ui.choice_buttons.mousedown(this.choiceButtonPressed.bind(this));
+        this.ui.choice_buttons.mouseout(this.choiceButtonNomal.bind(this));
         this.ui.choice_buttons.click(this.setAnswer.bind(this));
     },
     getData: function(){
@@ -81,25 +81,46 @@ questionnaire = {
         //console.log(this.data.cursor, '/', this.data.questions.length);
         this.render();
     },
-    pushButton: function(e){
+    choiceButtonPressed: function(e){
         this.ui.choice_buttons.removeClass('active');
         $(e.target).addClass('active');
     },
-    unpushButton: function(e){
+    choiceButtonNomal: function(e){
         this.ui.choice_buttons.removeClass('active');
     },
     setAnswer: function(e){
-        var answer = $(e.target).data('answer');
-        this.data.answers[this.data.cursor] = answer;
-        
-        if(this.data.answers.length < this.data.questions.length){
-            if(this.data.answers.length % 5 == 0){
-                this.sendAnswers();
-            } 
-        } else {
-            this.testComplete();
+        var answer = 'Y';
+        if(e.type == 'click'){
+            answer = $(e.target).data('answer');
+        } else if(e.type == 'keydown') {
+            if(/97|49/.test(e.which)) {
+                $('.answer-yes').addClass('active');
+            } else if(/98|50/.test(e.which)) {
+                $('.answer-maybe').addClass('active');
+            } else if(/99|51/.test(e.which)) {
+                $('.answer-no').addClass('active');
+            }
+        } else if(e.type == 'keyup') {
+            if(/97|49/.test(e.which)) {
+                answer = 'Y';
+            } else if(/98|50/.test(e.which)) {
+                answer = 'M';
+            } else if(/99|51/.test(e.which)) {
+                answer = 'N';
+            }
         }
-        this.next();
+
+        if(e.type == 'click' || e.type == 'keyup'){
+            this.data.answers[this.data.cursor] = answer;
+            if(this.data.answers.length < this.data.questions.length){
+                if(this.data.answers.length % 5 == 0){
+                    this.sendAnswers();
+                } 
+            } else {
+                this.testComplete();
+            }
+            this.next();
+        }
     },
     sendAnswers: function(){
         var answered = this.data.answers.join("");
@@ -154,7 +175,7 @@ questionnaire = {
         }
     },
     start : function(){
-        // Greeting
+        // Greetings modal display.
         if($(window).width() < 480){ // Accepts name to display in greetings.
             $("header").css("display","none");
             $("#questionnaire_intro").css("display","block");
@@ -165,6 +186,11 @@ questionnaire = {
             $("#questionnaire_intro").css("display","none");
         });
 
+        // Events.
+        $(document).keydown(this.setAnswer.bind(this));
+        $(document).keyup(this.setAnswer.bind(this));
+
+        // All questions display logic.
         $("section.description").css({"opacity":"0"});
         $("section.how-it-works").css({"opacity":"0"});
         $("section.what-makes-it-unique").css({"opacity":"0"});
