@@ -16,7 +16,7 @@ questionnaire = {
         answers: [],          // Array of characters Y,M,N.
         cursor: 0,            // Index of currently viewed item.
         questions: [],        // Array of strings.
-        update_url: 'http://www.oxfordcapacityanalysis.org/update.action'
+        update_url: 'https://www.oxfordcapacityanalysis.org/update.action'
     },
     init: function(){
         // Fetch questions and populate to elements.
