@@ -1,0 +1,28 @@
+{
+  "name": "oxford-oca-builder",
+  "version": "1.0.0",
+  "description": "oxford site variations, desktop &amp; mobile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo \"Testing only\"",
+    "rebuild": "echo \"Rebuilding\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qualifiedleads/oxford.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qualifiedleads/oxford/issues"
+  },
+  "homepage": "https://github.com/qualifiedleads/oxford#readme",
+  "devDependencies": {
+    "fs-extra": "^3.0.1",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.6.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-webserver": "^0.9.1"
+  }
+}
