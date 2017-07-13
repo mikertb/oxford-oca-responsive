@@ -228,5 +228,7 @@ footer .footer-links a:hover
         line-height: 40px;
         padding-left: 40px;
     }
-    
+    .hint-block-kbd {
+        display: none;
+    }
 }

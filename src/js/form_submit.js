@@ -49,7 +49,7 @@ $(document).ready(function(){
 
         // Ajax submit
         $.ajax({
-            url: 'http://www.oxfordcapacityanalysis.org/oca-service.action', 
+            url: 'https://www.oxfordcapacityanalysis.org/oca-service.action', 
             dataType: 'jsonp', 
             data: {
                 id: 1, 
