@@ -7,10 +7,15 @@ This branch contains all development files. Source files are found inside 'src' 
 * [Gulp](http://gulpjs.com/)
 
 ### Installation
-Make sure Node is already installed ([download installer](https://nodejs.org/en/download/)) then install Gulp by running the following in terminal:
+1. Make sure Node is installed ([download installer](https://nodejs.org/en/download/)).
+2. Install Gulp by running the following in terminal:
 ```
 npm install gulp-cli -g
 ``` 
+3. Go to main project directory in terminal and install package dependencies:
+```
+npm install
+```
 
 ### Tasks
 
