@@ -86,6 +86,17 @@ h3
     background-image: -ms-linear-gradient(bottom, rgb(17,61,143) 7%, rgb(45,98,204) 54%, rgb(99,139,219) 77%);
     background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.07, rgb(17,61,143)), color-stop(0.54, rgb(45,98,204)), color-stop(0.77, rgb(99,139,219)));
 }
+:disabled.glass-button,
+:disabled.glass-button:hover {
+    color: #808080;
+    text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.9);
+    background: #bababa;
+    background-image: -webkit-linear-gradient(top, #bababa, #a0a0a0);
+    background-image: -moz-linear-gradient(top, #bababa, #a0a0a0);
+    background-image: -ms-linear-gradient(top, #bababa, #a0a0a0);
+    background-image: -o-linear-gradient(top, #bababa, #a0a0a0);
+    background-image: linear-gradient(to bottom, #bababa, #a0a0a0);
+}
 .top-section
 {
     margin-top: 25px;

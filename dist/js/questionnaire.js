@@ -92,6 +92,7 @@ questionnaire = {
         var answer = 'Y';
         if(e.type == 'click'){
             answer = $(e.target).data('answer');
+            this.next();
         } else if(e.type == 'keydown') {
             if(/97|49/.test(e.which)) {
                 $('.answer-yes').addClass('active');
@@ -103,10 +104,13 @@ questionnaire = {
         } else if(e.type == 'keyup') {
             if(/97|49/.test(e.which)) {
                 answer = 'Y';
+                this.next();
             } else if(/98|50/.test(e.which)) {
                 answer = 'M';
+                this.next();
             } else if(/99|51/.test(e.which)) {
                 answer = 'N';
+                this.next();
             }
         }
 
@@ -119,7 +123,6 @@ questionnaire = {
             } else {
                 this.testComplete();
             }
-            this.next();
         }
     },
     sendAnswers: function(){
